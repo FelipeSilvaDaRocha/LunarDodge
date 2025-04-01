@@ -17,15 +17,15 @@ class Menu:
         pygame.mixer_music.play(-1)
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(53, 'Lunar', COLOR_WHITE, (WIN_WIDTH / 2, 47))
-            self.menu_text(70, 'D', COLOR_WHITE, (190, 130))
-            self.menu_text(70, 'dge', COLOR_WHITE, (WIN_WIDTH / 2 + 130, 130))
+            self.text_menu(53, 'Lunar', COLOR_WHITE, (WIN_WIDTH / 2, 47))
+            self.text_menu(70, 'D', COLOR_WHITE, (190, 130))
+            self.text_menu(70, 'dge', COLOR_WHITE, (WIN_WIDTH / 2 + 130, 130))
 
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_text(25, MENU_OPTION[i], COLOR_YELLOW, (120 + 190 * i, 290))
+                    self.text_menu(25, MENU_OPTION[i], COLOR_YELLOW, (120 + 190 * i, 290))
                 else:
-                    self.menu_text(25, MENU_OPTION[i], COLOR_WHITE, (120 + 190 * i, 290))
+                    self.text_menu(25, MENU_OPTION[i], COLOR_WHITE, (120 + 190 * i, 290))
 
             pygame.display.flip()
 
@@ -48,7 +48,7 @@ class Menu:
                     if event.key == pygame.K_RETURN:
                         return MENU_OPTION[menu_option]
 
-    def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
+    def text_menu(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Arial", size=text_size, bold=True)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(center=text_center_pos)
